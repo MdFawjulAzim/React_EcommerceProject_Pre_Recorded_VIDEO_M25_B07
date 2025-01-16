@@ -5,3 +5,5 @@
 ** npm install
 ** npm run dev
 ** npm run build
+--react package
+** npm install axios bootstrap bootstrap-icons html-react-parser js-cookie lottie-react react-bootstrap react-hot-toast react-image-gallery react-loading-skeleton react-router-dom react-star-ratings sweetalert2 zustand
