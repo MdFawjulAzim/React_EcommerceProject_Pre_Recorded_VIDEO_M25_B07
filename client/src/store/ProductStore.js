@@ -28,6 +28,7 @@ const ProductStore = create((set)=>({
 
     ListByRemark:null,
     ListByRemarkRequest:async(Remark)=>{
+        set({ListByRemark:null});
         let res= await axios.get(`/api/v1/ProductListByRemark/${Remark}`);
         if(res.data['status']==="success"){
             set({ListByRemark:res.data['data']});
