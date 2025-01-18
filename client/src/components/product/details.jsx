@@ -3,6 +3,7 @@ import ProductImages from "./ProductImages.jsx";
 import ProductStore from "../../store/ProductStore.js";
 import DetailsSkeleton from "../../skeleton/details-skeleton.jsx";
 import parse from 'html-react-parser';
+import Reviews from "./reviews.jsx";
 
 const Details = () => {
   const { Details, ReviewList } = ProductStore();
@@ -144,7 +145,7 @@ const Details = () => {
                   aria-labelledby="Review-tab"
                   tabIndex="0"
                 >
-                  <ul className="list-group list-group-flush"></ul>
+                  <Reviews/>
                 </div>
               </div>
             </div>
