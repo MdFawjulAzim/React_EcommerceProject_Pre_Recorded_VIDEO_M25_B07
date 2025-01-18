@@ -4,6 +4,7 @@ import HomePage from "./pages/home-page";
 import ProductByBrand from "./pages/product-by-brand";
 import ProductByCategory from "./pages/product-by-category";
 import ProductByKeyword from "./pages/product-by-keyword";
+import ProductDetails from "./pages/product-details";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route exact path="/by-brand/:id" element={<ProductByBrand/>} />
         <Route exact path="/by-category/:id" element={<ProductByCategory/>} />
         <Route exact path="/by-keyword/:keyword" element={<ProductByKeyword/>} />
+        <Route exact path="/details/:id" element={<ProductDetails/>} />
       </Routes>
     </BrowserRouter>
   );
