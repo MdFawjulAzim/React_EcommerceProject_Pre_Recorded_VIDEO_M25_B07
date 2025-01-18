@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductStore from "../../store/ProductStore";
 import StarRatings from "react-star-ratings/build/star-ratings.js";
 import { Link } from "react-router-dom";
 import ProductsSkeleton from "./../../skeleton/products-skeleton";
 
 const ProductList = () => {
-  const { ListProduct } = ProductStore();
+  const {
+    ListProduct,
+    BrandListRequest,
+    BrandList,
+    CategoryListRequest,
+    CategoryList,
+    ListByFilterRequest
+  } = ProductStore();
 
+  let [Filter, setFilter] = useState({
+    brandID: "",
+    categoryID: "",
+    priceMax: "",
+    priceMin: "",
+  });
+
+  const inputOnChange = async (name, value) => {
+    setFilter((data) => ({ ...data, [name]: value }));
+  };
+
+  useEffect(() => {
+    (async () => {
+      BrandList === null ? await BrandListRequest() : null;
+      CategoryList === null ? await CategoryListRequest() : null;
+
+      let isEveryFilterPropertyEmpty = Object.values(Filter).every(value=>value==="");
+      !isEveryFilterPropertyEmpty?await ListByFilterRequest(Filter):null
+      
+
+    })();
+  }, [Filter]);
   return (
     <>
       <div className="container mt-2">
@@ -16,19 +45,53 @@ const ProductList = () => {
             <div className="card vh-100 p-3 shadow-sm">
               {/* Brand Filter */}
               <label className="form-label mt-3">Brands</label>
-              <select className="form-control form-select">
+              <select
+                value={Filter.brandID}
+                onChange={async (e) => {
+                  await inputOnChange("brandID", e.target.value);
+                }}
+                className="form-control form-select"
+              >
                 <option value="">Choose Brand</option>
+                {BrandList !== null ? (
+                  BrandList.map((item, index) => (
+                    <option key={index} value={item._id}>
+                      {item.brandName}
+                    </option>
+                  ))
+                ) : (
+                  <option disabled>No Brands Available</option>
+                )}
               </select>
 
               {/* Category Filter */}
               <label className="form-label mt-3">Categories</label>
-              <select className="form-control form-select">
+              <select
+                value={Filter.categoryID}
+                onChange={async (e) => {
+                  await inputOnChange("categoryID", e.target.value);
+                }}
+                className="form-control form-select"
+              >
                 <option value="">Choose Category</option>
+                {CategoryList !== null ? (
+                  CategoryList.map((item, index) => (
+                    <option key={index} value={item._id}>
+                      {item.categoryName}
+                    </option>
+                  ))
+                ) : (
+                  <option disabled>No Categories Available</option>
+                )}
               </select>
 
               {/* Maximum Price Filter */}
-              <label className="form-label mt-3">Maximum Price ${`{}`}</label>
+              <label className="form-label mt-3">Maximum Price ${Filter.priceMax}</label>
               <input
+                value={Filter.priceMax}
+                onChange={async (e) => {
+                  await inputOnChange("priceMax", e.target.value);
+                }}
                 min={0}
                 max={1000000}
                 step={1000}
@@ -37,8 +100,12 @@ const ProductList = () => {
               />
 
               {/* Minimum Price Filter */}
-              <label className="form-label mt-3">Minimum Price ${`{}`}</label>
+              <label className="form-label mt-3">Minimum Price ${Filter.priceMin}</label>
               <input
+                value={Filter.priceMin}
+                onChange={async (e) => {
+                  await inputOnChange("priceMin", e.target.value);
+                }}
                 min={0}
                 max={1000000}
                 step={1000}
