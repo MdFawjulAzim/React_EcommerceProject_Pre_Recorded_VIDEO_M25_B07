@@ -9,7 +9,6 @@ const DataSchema = mongoose.Schema({
     cus_name:{type:String},
     cus_phone:{type:String},
     cus_postcode:{type:String},
-    cus_postcode:{type:String},
     cus_state:{type:String},
     ship_add:{type:String},
     ship_city:{type:String},

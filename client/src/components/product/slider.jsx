@@ -41,21 +41,21 @@ const Slider = () => {
                   <div key={index} className={active} data-bs-interval="10000">
                     <div className="container">
                       <div className="row justify-content-center">
-                        <div className="col-12 col-lg-5 col-sm-12 col-md-5 p-5">
+                        <div className="col-12 col-lg-6 col-sm-12 col-md-5 p-5">
                           <h1 className="headline-1">{item["title"]}</h1>
                           <p>{item["des"]}</p>
                           <Link
-                            to="/"
+                            to={`/details/${item["productID"]}`}
                             className="btn text-white btn-success px-5"
                           >
                             Buy Now
                           </Link>
                         </div>
-                        <div className="col-12 col-lg-5 col-sm-12 col-md-5 p-5">
+                        <div className="col-12 col-lg-6 col-sm-12 col-md-5">
                           <img
                             src={item["image"]}
                             alt="image"
-                            className="w-100"
+                            className="w-100 h-100"
                           />
                         </div>
                       </div>

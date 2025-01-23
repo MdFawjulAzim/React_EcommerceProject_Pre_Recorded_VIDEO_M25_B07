@@ -145,7 +145,7 @@ const ProductList = () => {
                             className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                           >
                             <Link
-                              to={`/ProductDetails/${item["_id"]}`}
+                              to={`/details/${item["_id"]}`}
                               className="card shadow-sm h-100 rounded-3 bg-white"
                             >
                               <img
