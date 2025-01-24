@@ -11,17 +11,22 @@ const Footer = () => {
               <div className="col-md-4">
                 <h1 className="bodyMedium">Legals</h1>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/about">
                     About
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/refund">
                     Refund Policy
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/privacy">
+                    Refund privacy
+                  </Link>
+                </p>
+                <p className="my-2">
+                  <Link className="nav-link" to="/terms">
                     Terms
                   </Link>
                 </p>
@@ -29,17 +34,17 @@ const Footer = () => {
               <div className="col-md-4">
                 <h1 className="bodyMedium">Information</h1>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/how-to-buy">
                     How to buy
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/contact">
                     Contact
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/complain">
                     Complain
                   </Link>
                 </p>
@@ -48,7 +53,7 @@ const Footer = () => {
                 <h1 className="bodyMedium">About</h1>
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum{" "}
+                  typesetting industry. Lorem Ipsum
                 </p>
                 <img
                   className="w-75"
