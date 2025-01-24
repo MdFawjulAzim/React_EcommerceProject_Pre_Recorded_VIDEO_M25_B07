@@ -1,9 +1,23 @@
 import React from "react";
 import UserSubmitButton from "./UserSubmitButton";
 import UserStore from "../../store/UserStore";
+import ValidationHelper from "../../utility/ValidationHelper";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  let { LoginFormData } = UserStore();
+    let navigate = useNavigate();
+    let { LoginFormData, LoginFormOnChange, UserOTPRequest } = UserStore();
+
+  const onFormSubmit = () => {
+    if (!ValidationHelper.IsEmail(LoginFormData.email)) {
+      toast.error("Valid Email Address Required!");
+    } else {
+      let res=UserOTPRequest(LoginFormData.email);
+      res?navigate('/otp'):toast.success("Something Went Wrong!");
+    //   UserStore.ChangeLoginFormState("otp");
+    }
+  };
 
   return (
     <div className="container section">
@@ -16,12 +30,15 @@ const LoginForm = () => {
             </p>
             <input
               value={LoginFormData.email}
+              onChange={(e) => {
+                LoginFormOnChange("email", e.target.value);
+              }}
               placeholder="Email Address"
               type="email"
               className="form-control"
             />
             <UserSubmitButton
-              submit={false}
+              onClick={onFormSubmit}
               className="btn mt-3 btn-success"
               text="Next"
             />
