@@ -12,6 +12,8 @@ import TermsPage from './pages/terms-page';
 import HowToBuyPage from './pages/how-to-buy-page';
 import ContactPage from './pages/contact-page';
 import ComplainPage from './pages/complain-page';
+import LoginPage from "./pages/login-page";
+import OtpPage from "./pages/otp-page";
 
 const App = () => {
   return (
@@ -22,6 +24,7 @@ const App = () => {
         <Route exact path="/by-category/:id" element={<ProductByCategory/>} />
         <Route exact path="/by-keyword/:keyword" element={<ProductByKeyword/>} />
         <Route exact path="/details/:id" element={<ProductDetails/>} />
+
         <Route exact path="/about" element={<AboutPage/>} />
         <Route exact path="/refund" element={<RefundPage/>} />
         <Route exact path="/privacy" element={<PrivacyPage/>} />
@@ -29,6 +32,13 @@ const App = () => {
         <Route exact path="/how-to-buy" element={<HowToBuyPage/>} />
         <Route exact path="/contact" element={<ContactPage/>} />
         <Route exact path="/complain" element={<ComplainPage/>} />
+
+        <Route exact path="/login" element={<LoginPage/>} />
+        <Route exact path="/otp" element={<OtpPage/>} />
+
+
+
+
       </Routes>
     </BrowserRouter>
   );
