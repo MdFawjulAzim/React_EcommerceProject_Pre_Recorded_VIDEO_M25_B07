@@ -22,7 +22,7 @@ const Features = () => {
                     <div className="card-body">
                       <div className="row">
                         <div className="col-3">
-                          <img className="w-100" alt="image" src={item['img']} />
+                          <img className="w-100 h-100" alt="image" src={item['img']} />
                         </div>
                         <div className="col-9">
                           <h3 className="bodyXLarge">{item['name']}</h3>
