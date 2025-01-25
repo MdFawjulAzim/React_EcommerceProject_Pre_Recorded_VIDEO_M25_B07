@@ -2,20 +2,32 @@ import React, { useState } from "react";
 import ProductImages from "./ProductImages.jsx";
 import ProductStore from "../../store/ProductStore.js";
 import DetailsSkeleton from "../../skeleton/details-skeleton.jsx";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 import Reviews from "./reviews.jsx";
+import CartStore from "../../store/CartStore.js";
+import toast from "react-hot-toast";
+import CartSubmitButton from "../cart/CartSubmitButton.jsx";
 
 const Details = () => {
   const { Details, ReviewList } = ProductStore();
   const [quantity, SetQuantity] = useState(1);
+  const { CartFormChange, CartForm, CartSaveRequest, CartListRequest } = CartStore();
 
   const incrementQunatity = () => {
-    SetQuantity(quantity=>quantity + 1);
+    SetQuantity((quantity) => quantity + 1);
   };
 
   const decrementQunatity = () => {
     if (quantity > 1) SetQuantity(quantity - 1);
   };
+
+  const AddCart = async (productID) => {
+    let res=await CartSaveRequest(CartForm,productID,quantity);
+    if(res){
+        toast.success("Cart Item Added");
+        await  CartListRequest();
+    }
+}
 
   if (Details === null) {
     return <DetailsSkeleton />;
@@ -51,7 +63,13 @@ const Details = () => {
                 <div className="row">
                   <div className="col-4 p-2">
                     <label className="bodySmal">Size</label>
-                    <select className="form-control my-2 form-select">
+                    <select
+                      value={CartForm.size}
+                      onChange={(e) => {
+                        CartFormChange("size", e.target.value);
+                      }}
+                      className="form-control my-2 form-select"
+                    >
                       <option value="">Size</option>
                       {Details[0]["details"]["size"]
                         .split(",")
@@ -62,7 +80,13 @@ const Details = () => {
                   </div>
                   <div className="col-4  p-2">
                     <label className="bodySmal">Color</label>
-                    <select className="form-control my-2 form-select">
+                    <select
+                      value={CartForm.color}
+                      onChange={(e) => {
+                        CartFormChange("color", e.target.value);
+                      }}
+                      className="form-control my-2 form-select"
+                    >
                       <option value="">Color</option>
                       {Details[0]["details"]["color"]
                         .split(",")
@@ -74,24 +98,38 @@ const Details = () => {
                   <div className="col-4  p-2">
                     <label className="bodySmal">Quantity</label>
                     <div className="input-group my-2">
-                      <button onClick={decrementQunatity} className="btn btn-outline-secondary">-</button>
+                      <button
+                        onClick={decrementQunatity}
+                        className="btn btn-outline-secondary"
+                      >
+                        -
+                      </button>
                       <input
-                      value={quantity}
+                        value={quantity}
                         type="text"
                         className="form-control bg-light text-center"
                         readOnly
                       />
-                      <button onClick={incrementQunatity} className="btn btn-outline-secondary">+</button>
+                      <button
+                        onClick={incrementQunatity}
+                        className="btn btn-outline-secondary"
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                   <div className="col-4  p-2">
-                    <button className="btn w-100 btn-success">
-                      Add to Cart
-                    </button>
+                    <CartSubmitButton
+                      onClick={async () => {
+                        await AddCart(Details[0]["_id"]);
+                      }}
+                      className="btn w-100 btn-success"
+                      text="Add to Cart"
+                    />
                   </div>
                   <div className="col-4  p-2">
                     <button className="btn w-100 btn-success">
-                      Add to Wish
+                      Add to Cartt
                     </button>
                   </div>
                 </div>
@@ -135,9 +173,9 @@ const Details = () => {
                   role="tabpanel"
                   aria-labelledby="Speci-tab"
                   tabIndex="0"
-                >{
-                    parse(Details[0]['details']["des"])
-                }</div>
+                >
+                  {parse(Details[0]["details"]["des"])}
+                </div>
                 <div
                   className="tab-pane fade"
                   id="Review-tab-pane"
@@ -145,7 +183,7 @@ const Details = () => {
                   aria-labelledby="Review-tab"
                   tabIndex="0"
                 >
-                  <Reviews/>
+                  <Reviews />
                 </div>
               </div>
             </div>

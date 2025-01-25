@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/images/plainb-logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import ProductStore from "../../store/ProductStore";
 import UserStore from "../../store/UserStore";
 import UserSubmitButton from "../user/UserSubmitButton";
+import CartStore from "../../store/CartStore";
 
 const AppNavBar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { SetSearchKeyword, SearchKeyword } = ProductStore();
-  const { isLogin,UserLogoutRequest } = UserStore();
+  const { isLogin, UserLogoutRequest } = UserStore();
+  const { CartCount, CartListRequest } = CartStore();
 
-  const onLogout =async () => {
+  const onLogout = async () => {
     let res = await UserLogoutRequest();
     sessionStorage.clear();
     localStorage.clear();
     navigate("/");
   };
+
+  useEffect(() => {
+    (async () => {
+      if (isLogin()) {
+        await CartListRequest();
+        // await WishListRequest();
+      }
+    })();
+  }, []);
   return (
     <>
       <div className="container-fluid text-white p-2 bg-success">
@@ -116,6 +127,9 @@ const AppNavBar = () => {
               className="btn ms-2 btn-light position-relative"
             >
               <i className="bi text-dark bi-bag"></i>
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                {CartCount}
+              </span>
             </Link>
             <Link
               to="/wish"
