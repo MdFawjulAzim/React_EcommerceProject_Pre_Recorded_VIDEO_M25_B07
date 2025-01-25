@@ -5,11 +5,9 @@ const ObjectID=mongoose.Types.ObjectId
 const WishListService = async(req)=>{
     try{
         let user_id=new ObjectID(req.headers.user_id);
-        console.log(user_id)
         let matchStage = {$match:{userID:user_id}};
         let JoinStageProduct = {$lookup:{from:"products",localField:"productID",foreignField:"_id",as:"product"}};
         let unwindProductStage = {$unwind:"$product"};
-        console.log(unwindProductStage)
 
 
         let JoinStageBrand = {$lookup:{from:"brands",localField:"product.brandID",foreignField:"_id",as:"brand"}};
@@ -38,7 +36,7 @@ const WishListService = async(req)=>{
             unwindCategoryStage,
             projectionStage
         ]);
-        return {status:"success", Data:data};
+        return {status:"success", data:data};
     }catch(e){
         return {status:"fail", message:e.toString()};
     }

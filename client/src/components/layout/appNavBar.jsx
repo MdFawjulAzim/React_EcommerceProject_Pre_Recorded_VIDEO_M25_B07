@@ -5,12 +5,14 @@ import ProductStore from "../../store/ProductStore";
 import UserStore from "../../store/UserStore";
 import UserSubmitButton from "../user/UserSubmitButton";
 import CartStore from "../../store/CartStore";
+import WishStore from "../../store/WishStore";
 
 const AppNavBar = () => {
   const navigate = useNavigate();
   const { SetSearchKeyword, SearchKeyword } = ProductStore();
   const { isLogin, UserLogoutRequest } = UserStore();
   const { CartCount, CartListRequest } = CartStore();
+  const {WishCount,WishListRequest}=WishStore()
 
   const onLogout = async () => {
     let res = await UserLogoutRequest();
@@ -23,7 +25,7 @@ const AppNavBar = () => {
     (async () => {
       if (isLogin()) {
         await CartListRequest();
-        // await WishListRequest();
+        await WishListRequest();
       }
     })();
   }, []);
@@ -134,9 +136,10 @@ const AppNavBar = () => {
             <Link
               to="/wish"
               type="button"
-              className="btn ms-2 btn-light d-flex"
+              className="btn ms-2 btn-light d-flex position-relative"
             >
               <i className="bi text-dark bi-heart"></i>
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">{WishCount}</span>
             </Link>
             {isLogin() ? (
               <>

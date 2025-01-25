@@ -7,11 +7,14 @@ import Reviews from "./reviews.jsx";
 import CartStore from "../../store/CartStore.js";
 import toast from "react-hot-toast";
 import CartSubmitButton from "../cart/CartSubmitButton.jsx";
+import WishStore from "../../store/WishStore.js";
+import WishSubmitButton from "../wish/WishSubmitButton.jsx";
 
 const Details = () => {
-  const { Details, ReviewList } = ProductStore();
+  const { Details } = ProductStore();
   const [quantity, SetQuantity] = useState(1);
   const { CartFormChange, CartForm, CartSaveRequest, CartListRequest } = CartStore();
+  const { WishListRequest, WishSaveRequest } = WishStore();
 
   const incrementQunatity = () => {
     SetQuantity((quantity) => quantity + 1);
@@ -21,13 +24,21 @@ const Details = () => {
     if (quantity > 1) SetQuantity(quantity - 1);
   };
 
-  const AddCart = async (productID) => {
-    let res=await CartSaveRequest(CartForm,productID,quantity);
-    if(res){
-        toast.success("Cart Item Added");
-        await  CartListRequest();
+  const AddWish = async (productID) => {
+    let res = await WishSaveRequest(productID);
+    if (res) {
+      toast.success("Wish Item Added Successfully");
+      await WishListRequest();
     }
-}
+  };
+
+  const AddCart = async (productID) => {
+    let res = await CartSaveRequest(CartForm, productID, quantity);
+    if (res) {
+      toast.success("Cart Item Added Successfully");
+      await CartListRequest();
+    }
+  };
 
   if (Details === null) {
     return <DetailsSkeleton />;
@@ -128,9 +139,7 @@ const Details = () => {
                     />
                   </div>
                   <div className="col-4  p-2">
-                    <button className="btn w-100 btn-success">
-                      Add to Cartt
-                    </button>
+                  <WishSubmitButton onClick={async ()=>{await AddWish(Details[0]['_id'])}} className="btn w-100 btn-success" text="Add to Wish"/>
                   </div>
                 </div>
               </div>
