@@ -1,4 +1,4 @@
-import React from "react";
+
 import UserSubmitButton from "./UserSubmitButton";
 import UserStore from "../../store/UserStore";
 import ValidationHelper from "../../utility/ValidationHelper";
@@ -14,8 +14,7 @@ const LoginForm = () => {
       toast.error("Valid Email Address Required!");
     } else {
       let res=UserOTPRequest(LoginFormData.email);
-      res?navigate('/otp'):toast.success("Something Went Wrong!");
-    //   UserStore.ChangeLoginFormState("otp");
+      res?navigate('/otp'):toast.error("Something Went Wrong!");
     }
   };
 

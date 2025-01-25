@@ -2,9 +2,11 @@ import React from "react";
 import logo from "../../assets/images/plainb-logo.svg";
 import { Link } from "react-router-dom";
 import ProductStore from "../../store/ProductStore";
+import UserStore from "../../store/UserStore";
 
 const AppNavBar = () => {
   const { SetSearchKeyword, SearchKeyword } = ProductStore();
+  const { isLogin } = UserStore();
   return (
     <>
       <div className="container-fluid text-white p-2 bg-success">
@@ -71,7 +73,15 @@ const AppNavBar = () => {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <Link to={SearchKeyword.length>0?`/by-keyword/${SearchKeyword}`:"/"} className="btn btn-outline-dark" type="submit">
+              <Link
+                to={
+                  SearchKeyword.length > 0
+                    ? `/by-keyword/${SearchKeyword}`
+                    : "/"
+                }
+                className="btn btn-outline-dark"
+                type="submit"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -105,20 +115,32 @@ const AppNavBar = () => {
             >
               <i className="bi text-dark bi-heart"></i>
             </Link>
-            <Link
-              type="button"
-              className="btn ms-3 btn-success d-flex"
-              to="/profile"
-            >
-              Profile
-            </Link>
-            <Link
-              type="button"
-              className="btn ms-3 btn-success d-flex"
-              to="/profile"
-            >
-              Logout
-            </Link>
+            {isLogin() ? (
+              <>
+                {/* <UserSubmitButton
+                  // onClick={onLogout}
+                  text="Logout"
+                  className="btn ms-3 btn-success d-flex"
+                /> */}
+                <Link
+                  type="button"
+                  className="btn ms-3 btn-success d-flex"
+                  to="/"
+                >
+                  Profile
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  type="button"
+                  className="btn ms-3 btn-success d-flex"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

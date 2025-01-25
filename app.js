@@ -47,7 +47,7 @@ app.use(limiter)
 app.set('etag', false);
 app.use("/api/v1",router)
 
-app.use(express.static('client/dist'))
+app.use(express.static('client/dist'));
 
 // Add React Front End Routing
 app.get('*',function (req,res) {
