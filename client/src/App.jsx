@@ -16,6 +16,7 @@ import LoginPage from "./pages/login-page";
 import OtpPage from "./pages/otp-page";
 import ProfilePage from "./pages/profile-page";
 import CartPage from "./pages/cart-page";
+import WishPage from "./pages/wish-page";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
         <Route exact path="/otp" element={<OtpPage/>} />
 
         <Route exact path="/cart" element={<CartPage/>} />
+        <Route exact path="/wish" element={<WishPage/>} />
 
 
 
