@@ -14,6 +14,7 @@ import ContactPage from './pages/contact-page';
 import ComplainPage from './pages/complain-page';
 import LoginPage from "./pages/login-page";
 import OtpPage from "./pages/otp-page";
+import ProfilePage from "./pages/profile-page";
 
 const App = () => {
   return (
@@ -35,6 +36,9 @@ const App = () => {
 
         <Route exact path="/login" element={<LoginPage/>} />
         <Route exact path="/otp" element={<OtpPage/>} />
+
+        <Route exact path="/profile" element={<ProfilePage/>} />
+
 
 
 
