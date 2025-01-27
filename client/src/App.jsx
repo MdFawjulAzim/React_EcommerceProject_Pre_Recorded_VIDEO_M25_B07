@@ -17,6 +17,8 @@ import OtpPage from "./pages/otp-page";
 import ProfilePage from "./pages/profile-page";
 import CartPage from "./pages/cart-page";
 import WishPage from "./pages/wish-page";
+import OrderPage from "./pages/order-page";
+import InvoicePage from "./pages/invoice-page";
 
 const App = () => {
   return (
@@ -42,6 +44,12 @@ const App = () => {
 
         <Route exact path="/cart" element={<CartPage/>} />
         <Route exact path="/wish" element={<WishPage/>} />
+
+        <Route exact path="/orders" element={<OrderPage/>} />
+
+        <Route path="/invoice/:id" element={<InvoicePage/>}/>
+
+
 
 
 

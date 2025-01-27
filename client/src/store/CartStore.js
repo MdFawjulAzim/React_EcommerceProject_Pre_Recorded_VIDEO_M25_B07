@@ -46,12 +46,9 @@ const CartStore = create((set) => ({
       let payable = 0;
       res.data["data"].forEach((item, i) => {
         if (item["product"]["discount"] === true) {
-          total =
-            total +
-            parseInt(item["qty"]) * parseInt(item["product"]["discountPrice"]);
+          total = total + parseInt(item["qty"]) * parseInt(item["product"]["discountPrice"]);
         } else {
-          total =
-            total + parseInt(item["qty"]) * parseInt(item["product"]["price"]);
+          total = total + parseInt(item["qty"]) * parseInt(item["product"]["price"]);
         }
       });
 

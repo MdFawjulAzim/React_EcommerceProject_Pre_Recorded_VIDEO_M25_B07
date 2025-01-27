@@ -12,7 +12,7 @@ const AppNavBar = () => {
   const { SetSearchKeyword, SearchKeyword } = ProductStore();
   const { isLogin, UserLogoutRequest } = UserStore();
   const { CartCount, CartListRequest } = CartStore();
-  const {WishCount,WishListRequest}=WishStore()
+  const { WishCount, WishListRequest } = WishStore();
 
   const onLogout = async () => {
     let res = await UserLogoutRequest();
@@ -139,7 +139,16 @@ const AppNavBar = () => {
               className="btn ms-2 btn-light d-flex position-relative"
             >
               <i className="bi text-dark bi-heart"></i>
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">{WishCount}</span>
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                {WishCount}
+              </span>
+            </Link>
+            <Link
+              to="/orders"
+              type="button"
+              className="btn ms-4 btn-light position-relative"
+            >
+              <i className="bi text-dark  bi-truck"></i> Order
             </Link>
             {isLogin() ? (
               <>
