@@ -123,15 +123,23 @@ const Products = () => {
                         <div className="row">
                           {ListByRemark.map((item, index) => {
                             let price = (
-                              <p className="bodyMedium  text-dark my-1">
-                                Price: ${item["price"]}
+                              <p className="bodyMedium text-dark my-1">
+                                Price:{" "}
+                                <span className="fw-bold">
+                                  ${item["price"]}
+                                </span>
                               </p>
                             );
                             if (item["discount"] === true) {
                               price = (
-                                <p className="bodyMedium  text-dark my-1">
-                                  Price: <strike>${item["price"]}</strike> $
-                                  {item["discountPrice"]}
+                                <p className="bodyMedium my-1">
+                                  Price:{" "}
+                                  <strike className="text-danger">
+                                    ${item["price"]}
+                                  </strike>{" "}
+                                  <span className="fw-bold text-success">
+                                    ${item["discountPrice"]}
+                                  </span>
                                 </p>
                               );
                             }
@@ -143,23 +151,31 @@ const Products = () => {
                               >
                                 <Link
                                   to={`/details/${item["_id"]}`}
-                                  className="card shadow-sm h-100 rounded-3 bg-white"
+                                  className="card shadow-sm h-100 rounded-3 bg-white border-0 overflow-hidden"
+                                  style={{
+                                    transition: "0.3s",
+                                    cursor: "pointer",
+                                  }}
                                 >
                                   <img
                                     className="w-100 rounded-top-2"
-                                    alt="image"
+                                    alt={item["title"]}
                                     src={item["image"]}
+                                    style={{
+                                      objectFit: "cover",
+                                      height: "200px",
+                                    }}
                                   />
-                                  <div className="card-body">
-                                    <p className="bodySmal text-secondary my-1">
+                                  <div className="card-body text-center">
+                                    <p className="bodySmall text-secondary my-1 fw-semibold">
                                       {item["title"]}
                                     </p>
                                     {price}
                                     <StarRatings
                                       rating={parseFloat(item["star"])}
-                                      starRatedColor="red"
-                                      starDimension="15px"
-                                      starSpacing="2px"
+                                      starRatedColor="gold"
+                                      starDimension="18px"
+                                      starSpacing="3px"
                                     />
                                   </div>
                                 </Link>
@@ -184,15 +200,23 @@ const Products = () => {
                         <div className="row">
                           {ListByRemark.map((item, index) => {
                             let price = (
-                              <p className="bodyMedium  text-dark my-1">
-                                Price: ${item["price"]}
+                              <p className="bodyMedium text-dark my-1">
+                                Price:{" "}
+                                <span className="fw-bold">
+                                  ${item["price"]}
+                                </span>
                               </p>
                             );
                             if (item["discount"] === true) {
                               price = (
-                                <p className="bodyMedium  text-dark my-1">
-                                  Price: <strike>${item["price"]}</strike> $
-                                  {item["discountPrice"]}
+                                <p className="bodyMedium my-1">
+                                  Price:{" "}
+                                  <strike className="text-danger">
+                                    ${item["price"]}
+                                  </strike>{" "}
+                                  <span className="fw-bold text-success">
+                                    ${item["discountPrice"]}
+                                  </span>
                                 </p>
                               );
                             }
@@ -204,23 +228,31 @@ const Products = () => {
                               >
                                 <Link
                                   to={`/details/${item["_id"]}`}
-                                  className="card shadow-sm h-100 rounded-3 bg-white"
+                                  className="card shadow-sm h-100 rounded-3 bg-white border-0 overflow-hidden"
+                                  style={{
+                                    transition: "0.3s",
+                                    cursor: "pointer",
+                                  }}
                                 >
                                   <img
                                     className="w-100 rounded-top-2"
-                                    alt="image"
+                                    alt={item["title"]}
                                     src={item["image"]}
+                                    style={{
+                                      objectFit: "cover",
+                                      height: "200px",
+                                    }}
                                   />
-                                  <div className="card-body">
-                                    <p className="bodySmal text-secondary my-1">
+                                  <div className="card-body text-center">
+                                    <p className="bodySmall text-secondary my-1 fw-semibold">
                                       {item["title"]}
                                     </p>
                                     {price}
                                     <StarRatings
                                       rating={parseFloat(item["star"])}
-                                      starRatedColor="red"
-                                      starDimension="15px"
-                                      starSpacing="2px"
+                                      starRatedColor="gold"
+                                      starDimension="18px"
+                                      starSpacing="3px"
                                     />
                                   </div>
                                 </Link>
@@ -245,15 +277,23 @@ const Products = () => {
                         <div className="row">
                           {ListByRemark.map((item, index) => {
                             let price = (
-                              <p className="bodyMedium  text-dark my-1">
-                                Price: ${item["price"]}
+                              <p className="bodyMedium text-dark my-1">
+                                Price:{" "}
+                                <span className="fw-bold">
+                                  ${item["price"]}
+                                </span>
                               </p>
                             );
                             if (item["discount"] === true) {
                               price = (
-                                <p className="bodyMedium  text-dark my-1">
-                                  Price: <strike>${item["price"]}</strike> $
-                                  {item["discountPrice"]}
+                                <p className="bodyMedium my-1">
+                                  Price:{" "}
+                                  <strike className="text-danger">
+                                    ${item["price"]}
+                                  </strike>{" "}
+                                  <span className="fw-bold text-success">
+                                    ${item["discountPrice"]}
+                                  </span>
                                 </p>
                               );
                             }
@@ -265,23 +305,31 @@ const Products = () => {
                               >
                                 <Link
                                   to={`/details/${item["_id"]}`}
-                                  className="card shadow-sm h-100 rounded-3 bg-white"
+                                  className="card shadow-sm h-100 rounded-3 bg-white border-0 overflow-hidden"
+                                  style={{
+                                    transition: "0.3s",
+                                    cursor: "pointer",
+                                  }}
                                 >
                                   <img
                                     className="w-100 rounded-top-2"
-                                    alt="image"
+                                    alt={item["title"]}
                                     src={item["image"]}
+                                    style={{
+                                      objectFit: "cover",
+                                      height: "200px",
+                                    }}
                                   />
-                                  <div className="card-body">
-                                    <p className="bodySmal text-secondary my-1">
+                                  <div className="card-body text-center">
+                                    <p className="bodySmall text-secondary my-1 fw-semibold">
                                       {item["title"]}
                                     </p>
                                     {price}
                                     <StarRatings
                                       rating={parseFloat(item["star"])}
-                                      starRatedColor="red"
-                                      starDimension="15px"
-                                      starSpacing="2px"
+                                      starRatedColor="gold"
+                                      starDimension="18px"
+                                      starSpacing="3px"
                                     />
                                   </div>
                                 </Link>
@@ -306,15 +354,23 @@ const Products = () => {
                         <div className="row">
                           {ListByRemark.map((item, index) => {
                             let price = (
-                              <p className="bodyMedium  text-dark my-1">
-                                Price: ${item["price"]}
+                              <p className="bodyMedium text-dark my-1">
+                                Price:{" "}
+                                <span className="fw-bold">
+                                  ${item["price"]}
+                                </span>
                               </p>
                             );
                             if (item["discount"] === true) {
                               price = (
-                                <p className="bodyMedium  text-dark my-1">
-                                  Price: <strike>${item["price"]}</strike> $
-                                  {item["discountPrice"]}
+                                <p className="bodyMedium my-1">
+                                  Price:{" "}
+                                  <strike className="text-danger">
+                                    ${item["price"]}
+                                  </strike>{" "}
+                                  <span className="fw-bold text-success">
+                                    ${item["discountPrice"]}
+                                  </span>
                                 </p>
                               );
                             }
@@ -326,23 +382,31 @@ const Products = () => {
                               >
                                 <Link
                                   to={`/details/${item["_id"]}`}
-                                  className="card shadow-sm h-100 rounded-3 bg-white"
+                                  className="card shadow-sm h-100 rounded-3 bg-white border-0 overflow-hidden"
+                                  style={{
+                                    transition: "0.3s",
+                                    cursor: "pointer",
+                                  }}
                                 >
                                   <img
                                     className="w-100 rounded-top-2"
-                                    alt="image"
+                                    alt={item["title"]}
                                     src={item["image"]}
+                                    style={{
+                                      objectFit: "cover",
+                                      height: "200px",
+                                    }}
                                   />
-                                  <div className="card-body">
-                                    <p className="bodySmal text-secondary my-1">
+                                  <div className="card-body text-center">
+                                    <p className="bodySmall text-secondary my-1 fw-semibold">
                                       {item["title"]}
                                     </p>
                                     {price}
                                     <StarRatings
                                       rating={parseFloat(item["star"])}
-                                      starRatedColor="red"
-                                      starDimension="15px"
-                                      starSpacing="2px"
+                                      starRatedColor="gold"
+                                      starDimension="18px"
+                                      starSpacing="3px"
                                     />
                                   </div>
                                 </Link>
@@ -367,15 +431,23 @@ const Products = () => {
                         <div className="row">
                           {ListByRemark.map((item, index) => {
                             let price = (
-                              <p className="bodyMedium  text-dark my-1">
-                                Price: ${item["price"]}
+                              <p className="bodyMedium text-dark my-1">
+                                Price:{" "}
+                                <span className="fw-bold">
+                                  ${item["price"]}
+                                </span>
                               </p>
                             );
                             if (item["discount"] === true) {
                               price = (
-                                <p className="bodyMedium  text-dark my-1">
-                                  Price: <strike>${item["price"]}</strike> $
-                                  {item["discountPrice"]}
+                                <p className="bodyMedium my-1">
+                                  Price:{" "}
+                                  <strike className="text-danger">
+                                    ${item["price"]}
+                                  </strike>{" "}
+                                  <span className="fw-bold text-success">
+                                    ${item["discountPrice"]}
+                                  </span>
                                 </p>
                               );
                             }
@@ -387,23 +459,31 @@ const Products = () => {
                               >
                                 <Link
                                   to={`/details/${item["_id"]}`}
-                                  className="card shadow-sm h-100 rounded-3 bg-white"
+                                  className="card shadow-sm h-100 rounded-3 bg-white border-0 overflow-hidden"
+                                  style={{
+                                    transition: "0.3s",
+                                    cursor: "pointer",
+                                  }}
                                 >
                                   <img
                                     className="w-100 rounded-top-2"
-                                    alt="image"
+                                    alt={item["title"]}
                                     src={item["image"]}
+                                    style={{
+                                      objectFit: "cover",
+                                      height: "200px",
+                                    }}
                                   />
-                                  <div className="card-body">
-                                    <p className="bodySmal text-secondary my-1">
+                                  <div className="card-body text-center">
+                                    <p className="bodySmall text-secondary my-1 fw-semibold">
                                       {item["title"]}
                                     </p>
                                     {price}
                                     <StarRatings
                                       rating={parseFloat(item["star"])}
-                                      starRatedColor="red"
-                                      starDimension="15px"
-                                      starSpacing="2px"
+                                      starRatedColor="gold"
+                                      starDimension="18px"
+                                      starSpacing="3px"
                                     />
                                   </div>
                                 </Link>

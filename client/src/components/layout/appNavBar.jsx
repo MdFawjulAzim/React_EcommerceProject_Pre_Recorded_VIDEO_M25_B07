@@ -31,21 +31,22 @@ const AppNavBar = () => {
   }, []);
   return (
     <>
+      {/* Top Contact Section */}
       <div className="container-fluid text-white p-2 bg-success">
         <div className="container">
-          <div className="row justify-content-around">
+          <div className="row justify-content-between">
+            {/* Left Side - Contact Information */}
             <div className="col-md-6">
-              <span>
-                <span className="f-12">
-                  <i className="bi bi-envelope"></i> Support@PlanB.com{" "}
-                </span>
-                <span className="f-12 mx-2">
-                  <i className="bi bi-envelope"></i> 01774688159{" "}
-                </span>
+              <span className="f-12">
+                <i className="bi bi-envelope"></i> mdfawjulazim@gmail.com
+              </span>
+              <span className="f-12 mx-2">
+                <i className="bi bi-envelope"></i> 01644213617
               </span>
             </div>
+            {/* Right Side - Social Media Icons */}
             <div className="col-md-6">
-              <span className="float-end">
+              <span className="float-md-end float-start">
                 <span className="bodySmal mx-2">
                   <i className="bi bi-whatsapp"></i>
                 </span>
@@ -60,10 +61,13 @@ const AppNavBar = () => {
           </div>
         </div>
       </div>
-      <nav className="navbar  sticky-top bg-white navbar-expand-lg navbar-light py-3">
+
+      {/* Navbar Section */}
+      <nav className="navbar sticky-top bg-white navbar-expand-lg navbar-light py-3">
         <div className="container">
+          {/* Logo */}
           <Link className="navbar-brand" to="/">
-            <img className="img-fluid" src={logo} alt="" width="96px" />
+            <img className="img-fluid" src={logo} alt="Logo" width="50px" />
           </Link>
           <button
             className="navbar-toggler"
@@ -76,17 +80,34 @@ const AppNavBar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
+          {/* Navbar Menu */}
           <div className="collapse navbar-collapse" id="nav06">
             <ul className="navbar-nav mt-3 mt-lg-0 mb-3 mb-lg-0 ms-lg-3">
-              <span className="nav-item me-4">
+              <li className="nav-item me-4">
                 <Link className="nav-link" to="/">
                   Home
                 </Link>
-              </span>
+              </li>
+
+              <li className="nav-item me-4">
+                <Link className="nav-link" to="/about">
+                  About
+                </Link>
+              </li>
+
+              <li className="nav-item me-4">
+                <Link className="nav-link" to="/contact">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
-          <div className=" d-lg-flex">
-            <div className="input-group">
+
+          {/* Navbar Right Section */}
+          <div className="d-lg-flex justify-content-end align-items-center">
+            {/* Search Bar */}
+            <div className="input-group mb-2 mb-lg-0">
               <input
                 value={SearchKeyword}
                 onChange={(e) => SetSearchKeyword(e.target.value)}
@@ -102,17 +123,13 @@ const AppNavBar = () => {
                     : "/"
                 }
                 className="btn btn-outline-dark"
-                type="submit"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  style={{
-                    width: 24,
-                    height: 24,
-                  }}
+                  style={{ width: 24, height: 24 }}
                 >
                   <path
                     strokeLinecap="round"
@@ -123,19 +140,18 @@ const AppNavBar = () => {
                 </svg>
               </Link>
             </div>
-            <Link
-              to="/cart"
-              type="button"
-              className="btn ms-2 btn-light position-relative"
-            >
+
+            {/* Cart Icon */}
+            <Link to="/cart" className="btn ms-2 btn-light position-relative">
               <i className="bi text-dark bi-bag"></i>
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
                 {CartCount}
               </span>
             </Link>
+
+            {/* Wishlist Icon */}
             <Link
               to="/wish"
-              type="button"
               className="btn ms-2 btn-light d-flex position-relative"
             >
               <i className="bi text-dark bi-heart"></i>
@@ -143,13 +159,13 @@ const AppNavBar = () => {
                 {WishCount}
               </span>
             </Link>
-            <Link
-              to="/orders"
-              type="button"
-              className="btn ms-4 btn-light position-relative"
-            >
-              <i className="bi text-dark  bi-truck"></i> Order
+
+            {/* Order Link */}
+            <Link to="/orders" className="btn ms-4 btn-light position-relative">
+              <i className="bi text-dark bi-truck"></i> Order
             </Link>
+
+            {/* User Authentication Links */}
             {isLogin() ? (
               <>
                 <UserSubmitButton
@@ -157,24 +173,14 @@ const AppNavBar = () => {
                   text="Logout"
                   className="btn ms-3 btn-success d-flex"
                 />
-                <Link
-                  type="button"
-                  className="btn ms-3 btn-success d-flex"
-                  to="/profile"
-                >
+                <Link to="/profile" className="btn ms-3 btn-success d-flex">
                   Profile
                 </Link>
               </>
             ) : (
-              <>
-                <Link
-                  type="button"
-                  className="btn ms-3 btn-success d-flex"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </>
+              <Link to="/login" className="btn ms-3 btn-success d-flex">
+                Login
+              </Link>
             )}
           </div>
         </div>

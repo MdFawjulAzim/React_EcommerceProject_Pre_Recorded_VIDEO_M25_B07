@@ -10,30 +10,34 @@ const Features = () => {
   } else {
     return (
       <>
-        <div className="container section">
-          <div className="row">
-            {FeatureList.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="col-6 p-2 col-md-3 col-lg-3 col-sm-6"
-                >
-                  <div className="card shadow-sm">
-                    <div className="card-body">
-                      <div className="row">
-                        <div className="col-3">
-                          <img className="w-100 h-100" alt="image" src={item['img']} />
-                        </div>
-                        <div className="col-9">
-                          <h3 className="bodyXLarge">{item['name']}</h3>
-                          <span className="bodySmal">{item['description']}</span>
-                        </div>
-                      </div>
+        <div className="container section py-4">
+          <div className="row g-4">
+            {FeatureList.map((item, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div className="card shadow-sm border-0 h-100">
+                  <div className="card-body d-flex align-items-center">
+                    <div className="me-3 flex-shrink-0">
+                      <img
+                        className="rounded-circle border w-100"
+                        style={{
+                          maxWidth: "60px",
+                          height: "60px",
+                          objectFit: "cover",
+                        }}
+                        alt="feature"
+                        src={item.img}
+                      />
+                    </div>
+                    <div className="flex-grow-1">
+                      <h6 className="fw-bold text-dark mb-1">{item.name}</h6>
+                      <p className="text-muted small mb-0">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </>
