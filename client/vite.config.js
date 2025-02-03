@@ -7,7 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/": {
-        target: "http://localhost:8000", // Replace with your actual API server URL
+        target: "https://mern07ecommerce.azimemil.xyz", // Replace with your actual API server URL
+        changeOrigin: true,
+        secure: false,
       },
     },
   },

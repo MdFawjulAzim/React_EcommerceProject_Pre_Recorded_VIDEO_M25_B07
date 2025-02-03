@@ -11,7 +11,7 @@ exports.CreateInvoice=async(req,res)=>{
 
 exports.PaymentSuccess=async (req, res) => {
     let result=await PaymentSuccessService(req);
-    return res.redirect('http://localhost:5173/orders');
+    return res.redirect('http://mern.e-commerce07.azimemil.xyz/orders');
 }
 
 exports.PaymentFail=async (req, res) => {
