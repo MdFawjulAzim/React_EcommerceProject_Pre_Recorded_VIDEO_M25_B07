@@ -7,11 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/": {
-        target: "https://commercemernfawjulbackend.vercel.app", // Replace with your actual API server URL
+        target: "https://react-ecommerce-project-pre-recorde.vercel.app/", // Replace with your actual API server URL
         changeOrigin: true,
         secure: false,
       },
     },
-    
+
   },
 });
