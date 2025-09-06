@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/": {
-        target: "http://localhost:8000/", // Replace with your actual API server URL
+        target: "https://commercemernfawjulbackend.vercel.app/", // Replace with your actual API server URL
         changeOrigin: true,
         secure: false,
       },

@@ -39,7 +39,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        imgSrc: ["'self'", "data: ", "https://mern.ecom.azimemil.xyz"], // Add your domain here
+        imgSrc: ["'self'", "data: ", "https://commercemernfawjul.vercel.app/"], // Add your domain here
       },
     },
   })
